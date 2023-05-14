@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sui/sui.css">
+    <title>Leads</title>
+</head>
+
+<body>
+    <navbar>
+        <brand> Leads </brand>
+    </navbar>
+
+    <container p="50px">
+
+        <flex justify="space-between" padding="20px">
+            <h3> Leads </h3>
+            <button trigger="create-lead" mode="open"> Add Lead </button>
+        </flex>
+
+        <table>
+            <thead>
+                <tr>
+                    <th> # </th>
+                    <th> First name </th>
+                    <th> Last name </th>
+                    <th> Country </th>
+                    <th> Status </th>
+                    <th> Actions </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td> 1 </td>
+                    <td> Alex </td>
+                    <td> Scott </td>
+                    <td> USA </td>
+                    <td> Active </td>
+                    <td>
+                        <h-stack gap="10px">
+                            <a href="#"> Deactivate </a>
+                            <a href="#"> Suspend </a>
+                            <a href="#"> Activate </a>
+                            <a href="#"> Delete </a>
+                        </h-stack>
+
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </container>
+
+    <dimmer id="create-lead">
+        <modal>
+            <heading> Create Lead </heading>
+            <content
+            <form action="#" method="post" width="500px">
+                <v-stack>
+                    <input type="text" placeholder="First name">
+                    <input type="text" placeholder="Last name">
+                    <input type="text" placeholder="Country">
+                    <select>
+                        <option value="active"> Active </option>
+                        <option value="active"> Detactivated </option>
+                        <option value="active"> Suspend </option>
+                    </select>
+                </v-stack>
+            </form>
+            <actions>
+                <button type="Submit"> Save </button>
+                <button trigger="create-lead" mode="close"> Close </button>
+            </actions>
+        </content>
+    </modal>
+    </dimmer>
+</body>
+<script src="./sui/sui.js"></script>
+
+</html>

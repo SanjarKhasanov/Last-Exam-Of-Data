@@ -1,0 +1,71 @@
+<div class="wrapper">
+    <navbar>
+        <brand> Leads </brand>
+    </navbar>
+
+    <container p="50px">
+
+        <flex justify="space-between" padding="20px">
+            <h3> Leads </h3>
+            <button trigger="create-lead" mode="open"> Add Lead </button>
+        </flex>
+
+        <table>
+            <thead>
+                <tr>
+                    <th> # </th>
+                    <th> First name </th>
+                    <th> Last name </th>
+                    <th> Country </th>
+                    <th> Status </th>
+                    <th> Actions </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each leads}}
+                <tr>
+                    <td> {{id}} </td>
+                    <td> {{name}} </td>
+                    <td> {{surname}} </td>
+                    <td> {{country}} </td>
+                    <td> {{status}} </td>
+                    <td>
+                        <h-stack gap="10px">
+                            <a href="/detactivated/{{id}}/detactivated"> Deactivate </a>
+                            <a href="/suspend/{{id}}/suspend"> Suspend </a>
+                            <a href="/active/{{id}}/active"> Activate </a>
+                            <a href="/delete/{{id}}"> Delete </a>
+                        </h-stack>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+    </container>
+
+    <dimmer id="create-lead">
+        <modal>
+            <heading> Create Lead </heading>
+            <content>
+            <form action="/" method="post" width="500px">
+                <v-stack>
+                    <input type="text" placeholder="First name" name="name">
+                    <input type="text" placeholder="Last name" name="surname">
+                    <input type="text" placeholder="Country" name="country">
+                    <select name="status">
+                        <option value="active"> Active </option>
+                        <option value="detactivated"> Detactivated </option>
+                        <option value="suspend"> Suspend </option> 
+                    </select>
+                </v-stack>
+            <actions>
+                <button type="Submit"> Save </button>
+                <button trigger="create-lead" mode="close"> Close </button>
+            </actions>
+            </form>
+        </content>
+    </modal>
+    </dimmer>
+</div>
